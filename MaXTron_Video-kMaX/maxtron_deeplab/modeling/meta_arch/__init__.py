@@ -1,0 +1,1 @@
+from .maxtron_deeplab_head import MaXTronDeepLabHead
