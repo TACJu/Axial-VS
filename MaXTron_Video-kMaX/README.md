@@ -2,7 +2,7 @@
 
 ## Installation
 
-See [installation instructions](INSTALL.md).
+See [Installation Instructions](INSTALL.md).
 
 ## Datasets
 
