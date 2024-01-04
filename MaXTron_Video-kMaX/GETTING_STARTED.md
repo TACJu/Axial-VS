@@ -13,7 +13,12 @@ The training of MaXTron_Video-kMaX can be divided into three steps:
 
 > Pre-train kMaX-DeepLab + Multi-Scale Deformable Attention on COCO
 
-We will release the code and configs for pre-training kMaX-DeepLab + MSDA soon. We now provide the pre-trained weights with backbone R50 and ConvNeXt-L in the [model zoo](MODEL_ZOO.md) first.
+To pre-train kMaX-DeepLab + MSDA, first setup the COCO dataset following kMaX-DeepLab,
+then run:
+```
+python train_net.py --num-gpus 8 \
+  --config-file configs/coco/panoptic-segmentation/kmax_wc_r50.yaml
+```
 
 > Train MaXTron w/ Video-kMaX near-online
 

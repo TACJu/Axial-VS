@@ -27,18 +27,12 @@ def build_pixel_decoder(cfg, input_shape):
     return model
 
 
-def build_spatial_encoder(cfg, input_shape):
+def build_wc_module(cfg, input_shape):
     """
-    Build a spatial encoder from `cfg.MODEL.KMAX_DEEPLAB.SPATIAL_ENC.NAME`.
+    Build a spatial temporal encoder from `cfg.MODEL.KMAX_DEEPLAB.WITHIN_CLIP_TRACKING_MODULE.NAME`.
     """
-    name = cfg.MODEL.KMAX_DEEPLAB.SPATIAL_ENC.NAME
+    name = cfg.MODEL.KMAX_DEEPLAB.WITHIN_CLIP_TRACKING_MODULE.NAME
     model = SEM_SEG_HEADS_REGISTRY.get(name)(cfg, input_shape)
-    forward_features = getattr(model, "forward_features", None)
-    if not callable(forward_features):
-        raise ValueError(
-            "Only SEM_SEG_HEADS with forward_features method can be used as pixel decoder. "
-            f"Please implement forward_features for {name} to only return mask features."
-        )
     return model
 
 
@@ -51,7 +45,7 @@ class kMaXDeepLabHead(nn.Module):
         input_shape: Dict[str, ShapeSpec],
         *,
         num_classes: int,
-        spatial_encoder: Any,
+        wc_module: nn.Module,
         pixel_decoder: nn.Module,
         loss_weight: float = 1.0,
         ignore_value: int = -1,
@@ -76,7 +70,7 @@ class kMaXDeepLabHead(nn.Module):
         self.common_stride = 4
         self.loss_weight = loss_weight
 
-        self.spatial_encoder = spatial_encoder
+        self.wc_module = wc_module
         self.pixel_decoder = pixel_decoder
         self.predictor = transformer_predictor
 
@@ -90,7 +84,7 @@ class kMaXDeepLabHead(nn.Module):
             },
             "ignore_value": cfg.MODEL.SEM_SEG_HEAD.IGNORE_VALUE,
             "num_classes": cfg.MODEL.SEM_SEG_HEAD.NUM_CLASSES,
-            "spatial_encoder": build_spatial_encoder(cfg, input_shape) if cfg.MODEL.KMAX_DEEPLAB.SPATIAL_ENC.ENABLE else None,
+            "wc_module": build_wc_module(cfg, input_shape) if cfg.MODEL.KMAX_DEEPLAB.WITHIN_CLIP_TRACKING_MODULE.ENABLE else None,
             "pixel_decoder": build_pixel_decoder(cfg, input_shape),
             "loss_weight": cfg.MODEL.SEM_SEG_HEAD.LOSS_WEIGHT,
             "transformer_predictor": build_transformer_decoder(cfg, input_shape),
@@ -100,8 +94,8 @@ class kMaXDeepLabHead(nn.Module):
         return self.layers(features, return_semantic_features=return_semantic_features)
 
     def layers(self, features, return_semantic_features=False):
-        if self.spatial_encoder is not None:
-            features = self.spatial_encoder.forward_features(features)
+        if self.wc_module is not None:
+            features = self.wc_module.forward_features(features)
         panoptic_features, semantic_features, multi_scale_features = self.pixel_decoder.forward_features(features)
         predictions = self.predictor(multi_scale_features, panoptic_features, semantic_features)
         if return_semantic_features:

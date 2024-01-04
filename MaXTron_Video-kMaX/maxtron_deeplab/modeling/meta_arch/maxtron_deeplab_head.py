@@ -15,7 +15,7 @@ from kmax_deeplab.modeling.transformer_decoder.kmax_transformer_decoder import b
 
 def build_wc_module(cfg, input_shape):
     """
-    Build a spatial temporal encoder from `cfg.MODEL.KMAX_DEEPLAB.SPATIAL_TEMPORAL_ENC.NAME`.
+    Build a spatial temporal encoder from `cfg.MODEL.MAXTRON.WITHIN_CLIP_TRACKING_MODULE.NAME`.
     """
     name = cfg.MODEL.MAXTRON.WITHIN_CLIP_TRACKING_MODULE.NAME
     model = SEM_SEG_HEADS_REGISTRY.get(name)(cfg, input_shape)

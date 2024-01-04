@@ -1,0 +1,7 @@
+_BASE_: kmax_r50.yaml
+MODEL:
+  KMAX_DEEPLAB:
+    WITHIN_CLIP_TRACKING_MODULE:
+      ENABLE: True
+      NAME: "WithinClipTrackingModule"
+      SPATIAL_LAYERS: 2
