@@ -16,6 +16,15 @@ For detailed usage of MaXTron, see
 
 [MaXTron w/ Tube-Link](MaXTron_Tube-Link/README.md)
 
+## Demos
+
+![demo_0](imgs/0.gif)
+![demo_1](imgs/1.gif)
+![demo_2](imgs/2.gif)
+![demo_3](imgs/3.gif)
+![demo_4](imgs/4.gif)
+![demo_5](imgs/5.gif)
+
 ## <a name="Citing MaXTron"></a>Citing  MaXTron
 
 If you use MaXTron in your research, please use the following BibTeX entry.
