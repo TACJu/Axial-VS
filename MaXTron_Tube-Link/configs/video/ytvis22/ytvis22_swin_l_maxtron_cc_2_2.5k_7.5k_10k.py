@@ -3,28 +3,51 @@ num_stuff_classes = 0
 num_classes = num_things_classes + num_stuff_classes
 
 
+# note: start from 10, the swin schedule changes
 _base_ = [
     '../_base_/datasets/yvis_2021.py',
     '../_base_/models/mask2former_tube_r50.py',
     '../_base_/default_runtime.py',
-    '../_base_/schedules/mask2former_schedules_iter.py',
+    '../_base_/schedules/mask2former_swin_schedules_iter.py',
 ]
 
+
+depths = [2, 2, 18, 2]
 model=dict(
     fix_backbone=False,
     type='TubeLinkVideoVIS',
+    backbone=dict(
+        _delete_=True,
+        type='SwinTransformer',
+        embed_dims=192,
+        depths=depths,
+        num_heads=[6, 12, 24, 48],
+        window_size=12,
+        pretrain_img_size=384,
+        mlp_ratio=4,
+        qkv_bias=True,
+        qk_scale=None,
+        drop_rate=0.,
+        attn_drop_rate=0.,
+        drop_path_rate=0.3,
+        patch_norm=True,
+        out_indices=(0, 1, 2, 3),
+        with_cp=True,
+        convert_weights=True,
+        frozen_stages=-1,
+    ),
     panoptic_head=dict(
         type='Mask2FormerVideoCCHeadTube',
-        in_channels=[256, 512, 1024, 2048],  # pass to pixel_decoder inside
+        in_channels=[192, 384, 768, 1536],  # pass to pixel_decoder inside
         strides=[4, 8, 16, 32],
         feat_channels=256,
         out_channels=256,
         num_things_classes=num_things_classes,
         num_stuff_classes=num_stuff_classes,
         num_queries=100,
-        train_num_frames=9,
-        train_num_clips=3,
-        test_num_frames=3,
+        train_num_frames=36,
+        train_num_clips=6,
+        test_num_frames=6,
         num_cc_layers=4,
         trajectory_drop_out=0.1,
         kernel_sizes=(3,3,3),
@@ -122,10 +145,11 @@ model=dict(
     ),
 )
 
-# load tube_link_vps coco r50
-load_from = '/mnt/bn/jieneng-eu-nas4web/ju/ckpt/Tube-Link/ytvis21/r50_33_sc_attn_drop_0.0_repeat/iter_15000.pth'
+# load tube_link_vps coco swin-l
+load_from = "/mnt/bn/jieneng-eu-nas4web/ju/ckpt/Tube-Link/ytvis21/swin-l_66_sc_attn_drop_0.0/iter_10000.pth"
 
-work_dir = 'work_dir/ytvis21/r50_maxtron_cc'
+work_dir = 'work_dir/ytvis21/swin-l_maxtron_cc'
+
 
 lr_config = dict(
     policy='step',
@@ -155,5 +179,5 @@ dynamic_intervals = [(max_iters // interval * interval + 1, max_iters)]
 evaluation = dict()
 
 """
-g8at configs/video/exp_tubeminvis/y21_r50_003_tubemin_5k_10k_15k.py work_dir/y21_r50_003_nofix_tubemin_5k_10k_15k/latest.pth --format-only --eval-options resfile_path='work_dir/y21_r50_003_nofix_tubemin_5k_10k_15k'
+g8at configs/video/exp_tubeminvis/y21_swin_l_010_tubemin_2_5k_5k_10k.py work_dir/y21_swinl_010_nofix_tubemin_2_5k_5k_10k/latest.pth --format-only --eval-options resfile_path='work_dir/y21_swinl_010_nofix_tubemin_2_5k_5k_10k'
 """

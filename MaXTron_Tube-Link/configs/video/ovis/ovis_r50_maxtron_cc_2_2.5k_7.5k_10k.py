@@ -32,8 +32,8 @@ model = dict(
         num_things_classes=num_things_classes,
         num_stuff_classes=num_stuff_classes,
         num_queries=100,
-        train_num_frames=20,
-        train_num_clips=4,
+        train_num_frames=24,
+        train_num_clips=6,
         test_num_frames=4,
         num_cc_layers=6,
         trajectory_drop_out=0.1,
@@ -170,7 +170,7 @@ load_from = '/mnt/bn/jieneng-eu-nas4web/ju/ckpt/Tube-Link/ovis/r50_44_sc_attn_dr
 work_dir = 'work_dir/ovis/r50_maxtron_cc'
 
 crop_size=(384, 640)
-train_num_frames=25
+train_num_frames=24
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375],

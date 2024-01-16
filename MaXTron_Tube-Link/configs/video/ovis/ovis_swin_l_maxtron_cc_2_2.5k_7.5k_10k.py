@@ -43,7 +43,7 @@ model = dict(
         num_things_classes=num_things_classes,
         num_stuff_classes=num_stuff_classes,
         num_queries=100,
-        train_num_frames=20,
+        train_num_frames=16,
         train_num_clips=4,
         test_num_frames=4,
         num_cc_layers=4,
@@ -181,7 +181,7 @@ load_from = '/mnt/bn/jieneng-eu-nas4web/ju/ckpt/Tube-Link/ovis/swin-l_44_sc_attn
 work_dir = 'work_dir/ovis/swin-l_maxtron_cc'
 
 crop_size=(384, 640)
-train_num_frames=25
+train_num_frames=16
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375],

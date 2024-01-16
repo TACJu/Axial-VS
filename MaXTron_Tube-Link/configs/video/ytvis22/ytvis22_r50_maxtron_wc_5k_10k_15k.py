@@ -12,9 +12,8 @@ _base_ = [
 
 model=dict(
     fix_backbone=False,
-    type='TubeLinkVideoVIS',
     panoptic_head=dict(
-        type='Mask2FormerVideoCCHeadTube',
+        type='Mask2FormerVideoHeadTube',
         in_channels=[256, 512, 1024, 2048],  # pass to pixel_decoder inside
         strides=[4, 8, 16, 32],
         feat_channels=256,
@@ -22,15 +21,8 @@ model=dict(
         num_things_classes=num_things_classes,
         num_stuff_classes=num_stuff_classes,
         num_queries=100,
-        train_num_frames=9,
-        train_num_clips=3,
-        test_num_frames=3,
-        num_cc_layers=4,
-        trajectory_drop_out=0.1,
-        kernel_sizes=(3,3,3),
-        atrous_rates=(1,2,3),
-        drop_path_prob=0.1,
-        aspp_norm_fn='ln',
+        train_num_frames=4,
+        test_num_frames=4,
         num_transformer_feat_level=3,
         pixel_decoder=dict(
             type='MSDeformAttnPixelDecoder',
@@ -123,29 +115,54 @@ model=dict(
 )
 
 # load tube_link_vps coco r50
-load_from = '/mnt/bn/jieneng-eu-nas4web/ju/ckpt/Tube-Link/ytvis21/r50_33_sc_attn_drop_0.0_repeat/iter_15000.pth'
+load_from = 'https://download.openmmlab.com/mmdetection/v2.0/mask2former/mask2former_r50_lsj_8x2_50e_coco/' \
+            'mask2former_r50_lsj_8x2_50e_coco_20220506_191028-8e96e88b.pth'
 
-work_dir = 'work_dir/ytvis21/r50_maxtron_cc'
+work_dir = 'work_dir/ytvis21/r50_maxtron'
+
+
+embed_multi = dict(lr_mult=1.0, decay_mult=0.0)
+
+# optimizer
+optimizer = dict(
+    type='AdamW',
+    lr=0.0001,
+    weight_decay=0.05,
+    eps=1e-8,
+    betas=(0.9, 0.999),
+    paramwise_cfg=dict(
+        custom_keys={
+            'backbone': dict(lr_mult=0.1, decay_mult=1.0),
+            'query_embed': embed_multi,
+            'query_feat': embed_multi,
+            'level_embed': embed_multi,
+            'level_3d_encodeing': dict(lr_mult=1.0, decay_mult=1.0),
+            'temporal_layer': dict(lr_mult=1.0, decay_mult=1.0),
+        },
+        norm_decay_mult=0.0)
+)
+optimizer_config = dict(grad_clip=dict(max_norm=0.01, norm_type=2))
+
 
 lr_config = dict(
     policy='step',
     gamma=0.1,
     by_epoch=False,
-    step=[2500, 7500],
+    step=[5000, 10000],
     warmup='linear',
     warmup_by_epoch=False,
     warmup_iters=500,
     warmup_ratio=0.001,
 )
 
-max_iters = 10000
+max_iters = 15000
 runner = dict(type='IterBasedRunner', max_iters=max_iters)
 
 # no use following
-interval = 2500
+interval = 5000
 workflow = [('train', interval)]
 checkpoint_config = dict(
-    by_epoch=False, interval=interval, save_last=True, max_keep_ckpts=5
+    by_epoch=False, interval=interval, save_last=True, max_keep_ckpts=3
 )
 
 # Before 365001th iteration, we do evaluation every 5000 iterations.
