@@ -32,6 +32,13 @@
 <td align="center"><a href="configs/coco/panoptic_segmentation/kmax_wc_convnext_large.yaml">yaml</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1VbQDovawqSLELhF7u9U8j9YLrRmsUYKS/view?usp=drive_link">download</a>
 </tr>
+<!-- ROW: kMaX-DeepLab + MSDA ConvNeXtV2-L -->
+<tr><td align="center">kMaX-DeepLab + MSDA</td>
+<td align="center">ConvNeXtV2-L</td>
+<td align="center">58.1</td>
+<td align="center"><a href="configs/coco/panoptic_segmentation/kmax_wc_convnext_large.yaml">yaml</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1e6U1MF3NyI-f4Cd9wn2E7DX2nVNyYSP_/view?usp=drive_link">download</a>
+</tr>
 <table><tbody>
 
 ### VIPSeg
@@ -72,5 +79,19 @@
 <td align="center">57.1</td>
 <td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_cc_convnext_large.yaml">yaml</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1fFyTyUAPSE57fqzoy4JzlTGUkIgPf8bU/view?usp=drive_link">download</a>
+</tr>
+<!-- ROW: MaXTron WC ConvNeXtV2-L -->
+<tr><td align="center">MaXTron near-online</td>
+<td align="center">ConvNeXtV2-L</td>
+<td align="center">57.7</td>
+<td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_wc_convnextv2_large.yaml">yaml</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1aEIeO05V1kFYgtAWtj4lRFgPqFojHvzz/view?usp=drive_link">download</a>
+</tr>
+<!-- ROW: MaXTron CC ConvNeXt-L -->
+<tr><td align="center">MaXTron offline</td>
+<td align="center">ConvNeXtV2-L</td>
+<td align="center">58.0</td>
+<td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_cc_convnextv2_large.yaml">yaml</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1Lfr-FBuRqgqPUmUr6hCmK7ddgWt5OngH/view?usp=drive_link">download</a>
 </tr>
 <table><tbody>
