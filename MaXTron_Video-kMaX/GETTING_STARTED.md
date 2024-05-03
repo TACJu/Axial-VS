@@ -4,6 +4,17 @@ This document provides a brief intro of the usage of MaXTron w/ Video-kMaX.
 
 Please see [Getting Started with Detectron2](https://github.com/facebookresearch/detectron2/blob/master/GETTING_STARTED.md) for full usage.
 
+### Inference Demo with Pre-trained Models
+
+1. Pick a model and its config file from [model zoo](MODEL_ZOO.md), for example, `configs/VIPSeg/panoptic-segmentation/maxtron_wc_r50.yaml`.
+2. We provide `demo.py` that is able to demo builtin configs. Run it with:
+```
+cd demo_video/
+python3 demo.py --config-file ../configs/VIPSeg/panoptic-segmentation/maxtron_wc_r50.yaml \
+  --input video_folder/*.jpg --output visualization_folder \
+  --opts MODEL.WEIGHTS /path/to/checkpoint_file
+```
+The configs are made for training, therefore we need to specify `MODEL.WEIGHTS` to a model from model zoo for evaluation.
 
 ### Training & Evaluation in Command Line
 
