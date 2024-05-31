@@ -78,20 +78,20 @@
 <td align="center">ConvNeXt-L</td>
 <td align="center">57.1</td>
 <td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_cc_convnext_large.yaml">yaml</a></td>
-<td align="center"><a href="https://drive.google.com/file/d/1fFyTyUAPSE57fqzoy4JzlTGUkIgPf8bU/view?usp=drive_link">download</a>
+<td align="center"><a href="https://drive.google.com/file/d/1plbJPJOi9OmOHlcQ9tp2S9mfoOVUlBiv/view?usp=sharing">download</a>
 </tr>
 <!-- ROW: MaXTron WC ConvNeXtV2-L -->
 <tr><td align="center">MaXTron near-online</td>
 <td align="center">ConvNeXtV2-L</td>
 <td align="center">57.7</td>
 <td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_wc_convnextv2_large.yaml">yaml</a></td>
-<td align="center"><a href="https://drive.google.com/file/d/1aEIeO05V1kFYgtAWtj4lRFgPqFojHvzz/view?usp=drive_link">download</a>
+<td align="center">TBA
 </tr>
-<!-- ROW: MaXTron CC ConvNeXt-L -->
+<!-- ROW: MaXTron CC ConvNeXtV2-L -->
 <tr><td align="center">MaXTron offline</td>
 <td align="center">ConvNeXtV2-L</td>
 <td align="center">58.0</td>
 <td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_cc_convnextv2_large.yaml">yaml</a></td>
-<td align="center"><a href="https://drive.google.com/file/d/1Lfr-FBuRqgqPUmUr6hCmK7ddgWt5OngH/view?usp=drive_link">download</a>
+<td align="center">TBA
 </tr>
 <table><tbody>

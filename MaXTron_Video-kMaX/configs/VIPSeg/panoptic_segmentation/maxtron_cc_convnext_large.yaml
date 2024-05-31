@@ -26,7 +26,7 @@ MODEL:
       NAME: "WithinClipTrackingModule"
       NUM_STAGES: 2
       SPATIAL_LAYERS: 2
-      TEMPORAL_LAYERS: 6
+      TEMPORAL_LAYERS: 4
       TEMPORAL_ATTN_TYPE: "axial-trajectory"
       ATTN_DROP: 0.0
 
