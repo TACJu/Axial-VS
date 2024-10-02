@@ -1,12 +1,14 @@
-# MaXTron: Mask Transformer with Trajectory Attention for Video Panoptic Segmentation
+# (TMLR) A Simple Video Segmenter by Tracking Objects Along Axial Trajectories
 
-This repo contains the code for our paper [**MaXTron: Mask Transformer with Trajectory Attention for Video Panoptic Segmentation**](https://arxiv.org/abs/2311.18537)
+This repo contains the code for our paper [**A Simple Video Segmenter by Tracking Objects Along Axial Trajectories**](https://arxiv.org/abs/2311.18537).
+
+*Note*: We update our model name from MaXTron to Axial-VS in the TMLR version to better reflect the key innovations in our paper. To keep minimal change in the released codebase, we still maintain the usage of MaXTron below.
+
+*MaXTron* is a simple yet effective unified meta-architecture for video segmentation, which enriches existing clip-level segmenters by introducing a within-clip tracking module and a cross-clip tracking module, thus achieving better temporally consistent segmentation results.
 
 <div align="center">
   <img src="imgs/teaser.png" width="100%" height="100%"/>
 </div><br/>
-
-*MaXTron* is a simple yet effective unified meta-architecture for video segmentation, which enriches existing clip-level segmenters by introducing a within-clip tracking module and a cross-clip tracking module, thus achieving better temporally consistent segmentation results.
 
 ## Getting Started
 
@@ -27,16 +29,13 @@ For detailed usage of MaXTron, see
 
 ## <a name="Citing MaXTron"></a>Citing  MaXTron
 
-If you use MaXTron in your research, please use the following BibTeX entry.
+If you use MaXTron (Axial-VS) in your research, please use the following BibTeX entry.
 
 ```BibTeX
-@misc{he2023maxtron,
-      title={MaXTron: Mask Transformer with Trajectory Attention for Video Panoptic Segmentation}, 
-      author={Ju He and Qihang Yu and Inkyu Shin and Xueqing Deng and Xiaohui Shen and Alan Yuille and Liang-Chieh Chen},
-      year={2023},
-      eprint={2311.18537},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{hesimple,
+  title={A Simple Video Segmenter by Tracking Objects Along Axial Trajectories},
+  author={He, Ju and Yu, Qihang and Shin, Inkyu and Deng, Xueqing and Yuille, Alan and Shen, Xiaohui and Chen, Liang-Chieh},
+  journal={Transactions on Machine Learning Research}
 }
 ```
 
