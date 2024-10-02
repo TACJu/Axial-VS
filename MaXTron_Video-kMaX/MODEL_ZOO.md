@@ -83,15 +83,15 @@
 <!-- ROW: MaXTron WC ConvNeXtV2-L -->
 <tr><td align="center">MaXTron near-online</td>
 <td align="center">ConvNeXtV2-L</td>
-<td align="center">57.7</td>
+<td align="center">57.6 (reproduced)</td>
 <td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_wc_convnextv2_large.yaml">yaml</a></td>
-<td align="center">TBA
+<td align="center"><a href="https://drive.google.com/file/d/1AYphvZmMVSEbFdW7VbtZu1OKm2rPQIab/view?usp=sharing">download</a>
 </tr>
 <!-- ROW: MaXTron CC ConvNeXtV2-L -->
 <tr><td align="center">MaXTron offline</td>
 <td align="center">ConvNeXtV2-L</td>
-<td align="center">58.0</td>
+<td align="center">57.9 (reproduced)</td>
 <td align="center"><a href="configs/VIPSeg/panoptic_segmentation/maxtron_cc_convnextv2_large.yaml">yaml</a></td>
-<td align="center">TBA
+<td align="center"><a href="https://drive.google.com/file/d/1n5LP_plGK9uweDsqny2h2dtEBucv8brR/view?usp=sharing">download</a>
 </tr>
 <table><tbody>
