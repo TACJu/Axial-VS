@@ -1,4 +1,4 @@
-# (TMLR) A Simple Video Segmenter by Tracking Objects Along Axial Trajectories
+# (TMLR 2024) A Simple Video Segmenter by Tracking Objects Along Axial Trajectories
 
 This repo contains the code for our paper [**A Simple Video Segmenter by Tracking Objects Along Axial Trajectories**](https://arxiv.org/abs/2311.18537).
 
@@ -32,10 +32,15 @@ For detailed usage of MaXTron, see
 If you use MaXTron (Axial-VS) in your research, please use the following BibTeX entry.
 
 ```BibTeX
-@article{hesimple,
-  title={A Simple Video Segmenter by Tracking Objects Along Axial Trajectories},
-  author={He, Ju and Yu, Qihang and Shin, Inkyu and Deng, Xueqing and Yuille, Alan and Shen, Xiaohui and Chen, Liang-Chieh},
-  journal={Transactions on Machine Learning Research}
+@article{
+he2024a,
+title={A Simple Video Segmenter by Tracking Objects Along Axial Trajectories},
+author={Ju He and Qihang Yu and Inkyu Shin and Xueqing Deng and Alan Yuille and Xiaohui Shen and Liang-Chieh Chen},
+journal={Transactions on Machine Learning Research},
+issn={2835-8856},
+year={2024},
+url={https://openreview.net/forum?id=Sy6ZOStz5v},
+note={}
 }
 ```
 
